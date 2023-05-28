@@ -1,5 +1,5 @@
-#ifndef _DADOS_ALUNO_H_
-#define _DADOS_ALUNO_H_
+#ifndef _DADOS_H_
+#define _DADOS_H_
 
 typedef struct
 {
