@@ -3,6 +3,8 @@
 #include <string.h>
 #include <stdio.h>
 
+/****** ALUNO **********/
+
 Aluno *criarAluno(char *matricula,
                   char *cpf,
                   char *nome,
@@ -21,8 +23,22 @@ Aluno *criarAluno(char *matricula,
     {
         perror("Não há memória disponível. Encerrando\n\n");
     }
-    
+
     return aluno;
+}
+
+Aluno *atualizarAluno(char *matricula,
+                  char *cpf,
+                  char *nome,
+                  Endereco *end)
+{
+    if (aluno)
+    {
+        strcpy(aluno->matricula, matricula); 
+        strcpy(aluno->cpf, cpf);
+        strcpy(aluno->nome, nome);
+        aluno->endereco = end;
+    }
 }
 
 void destruirAluno(Aluno *aluno)
@@ -34,6 +50,9 @@ void destruirAluno(Aluno *aluno)
         free(aluno);
     }
 }
+
+
+/***** ENDERECO ********/
 
 Endereco *criarEndereco(char *logradouro,
                         char *bairro,
@@ -59,11 +78,15 @@ Endereco *criarEndereco(char *logradouro,
     return endereco;
 }
 
+
 void destruirEndereco(Endereco *endereco)
 {
     if (endereco)
         free(endereco);
 }
+
+
+/******** PROFESSOR **********/
 
 Professor *criarProfessor(char *matricula,
                   char *cpf,
@@ -87,6 +110,22 @@ Professor *criarProfessor(char *matricula,
     return professor;
 }
 
+Professor *atualizarProfessor(char *matricula,
+                  char *cpf,
+                  char *nome,
+                  Endereco *end)
+{
+   
+    if (professor)
+    {
+        strcpy(professor->matricula, matricula); 
+        strcpy(professor->cpf, cpf);
+        strcpy(professor->nome, nome);
+        professor->endereco = end;
+    }
+
+}
+
 void destruirProfessor(Professor *professor)
 {
     if (professor)
@@ -96,6 +135,9 @@ void destruirProfessor(Professor *professor)
         free(professor);
     }
 }
+
+
+/********** TURMA ************/
 
 Turma *criarTurma(
                 char *codigo,
@@ -121,6 +163,25 @@ Turma *criarTurma(
     }
 
     return turma;
+}
+
+Turma *atualizarTurma(
+                char *codigo,
+                char *nome_disciplina,
+                Professor *professor,
+                Aluno *lista_alunos,
+                float *media_turma
+)
+{
+    if (turma)
+    {
+        strcpy(turma->codigo, codigo); 
+        strcpy(turma->nome_disciplina, nome_disciplina);
+        turma->professor = professor;
+        turma->lista_alunos = lista_alunos;
+        turma->media_turma = media_turma;
+    }
+
 }
 
 void destruirTurma(Turma *turma)
