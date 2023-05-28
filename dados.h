@@ -1,5 +1,6 @@
 #ifndef _DADOS_H_
 #define _DADOS_H_
+#include "constantes.h"
 
 typedef struct
 {
@@ -31,7 +32,7 @@ typedef struct
     char codigo[10];
     char nome_disciplina[50];
     Professor *professor;
-    Aluno *lista_alunos;
+    Aluno lista_alunos[MAX_ALUNO];
     float media_turma;
 } Turma;
 
@@ -64,7 +65,7 @@ Professor *criarProfessor(
 
 void destruirProfessor(Professor *);
 
-Endereco *criarTurma(
+Turma *criarTurma(
                 char *codigo,
                 char *nome_disciplina,
                 Professor *professor,
