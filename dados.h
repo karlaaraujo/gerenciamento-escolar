@@ -54,6 +54,14 @@ Aluno *criarAluno(
                 Endereco *end
 );
 
+Aluno *atualizarAluno(
+                char *matricula,
+                char *cpf,
+                char *nome,
+                Endereco *end
+);
+
+
 void destruirAluno(Aluno *aluno);
 
 Professor *criarProfessor(
@@ -63,9 +71,24 @@ Professor *criarProfessor(
                     Endereco *end
 );
 
+Professor *atualizarProfessor(
+                    char *matricula,
+                    char *cpf,
+                    char *nome,
+                    Endereco *end
+);
+
 void destruirProfessor(Professor *);
 
 Turma *criarTurma(
+                char *codigo,
+                char *nome_disciplina,
+                Professor *professor,
+                Aluno *lista_alunos,
+                float *media_turma
+);
+
+Turma *atualizarTurma(
                 char *codigo,
                 char *nome_disciplina,
                 Professor *professor,
