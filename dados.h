@@ -1,5 +1,5 @@
-#ifndef _DADOS_H_
-#define _DADOS_H_
+#ifndef _DADOS_ALUNO_H_
+#define _DADOS_ALUNO_H_
 
 typedef struct
 {
@@ -18,18 +18,62 @@ typedef struct
     Endereco *endereco;
 } Aluno;
 
-Endereco *criarEndereco(char *logradouro,
+typedef struct
+{
+    char matricula[10];
+    char cpf[12];
+    char nome[50];
+    Endereco *endereco;
+} Professor;
+
+typedef struct
+{
+    char codigo[10];
+    char nome_disciplina[50];
+    Professor *professor;
+    Aluno *lista_alunos;
+    float media_turma;
+} Turma;
+
+
+Endereco *criarEndereco(
+                        char *logradouro,
                         char *bairro,
                         char *cidade,
                         char *estado,
-                        char *numero);
+                        char *numero
+);
 
-Aluno *criarAluno(char *matricula,
-                  char *cpf,
-                  char *nome,
-                  Endereco *end);
+void destruirEndereco(Endereco *);
+
+Aluno *criarAluno(
+                char *matricula,
+                char *cpf,
+                char *nome,
+                Endereco *end
+);
 
 void destruirAluno(Aluno *aluno);
-void destruirEndereco(Endereco *);
+
+Professor *criarProfessor(
+                    char *matricula,
+                    char *cpf,
+                    char *nome,
+                    Endereco *end
+);
+
+void destruirProfessor(Professor *);
+
+Endereco *criarTurma(
+                char *codigo,
+                char *nome_disciplina,
+                Professor *professor,
+                Aluno *lista_alunos,
+                float *media_turma
+);
+
+void destruirTurma(Turma *);
+
+
 
 #endif
