@@ -1,6 +1,5 @@
 #ifndef _DADOS_H_
 #define _DADOS_H_
-#include "constantes.h"
 
 typedef struct
 {
@@ -30,74 +29,43 @@ typedef struct
 typedef struct
 {
     char codigo[10];
-    char nome_disciplina[50];
-    Professor *professor;
-    Aluno lista_alunos[MAX_ALUNO];
-    float media_turma;
-} Turma;
+    char disciplina[50];
+    char matricula_professor_responsavel[10];
+    char qtd_alunos_matriculados[3];
+    char matricula_alunos[10];
+    char media_turma[10];
+} Turmas;
 
+#endif 
 
-Endereco *criarEndereco(
-                        char *logradouro,
+Endereco *criarEndereco(char *logradouro,
                         char *bairro,
                         char *cidade,
                         char *estado,
-                        char *numero
-);
+                        char *numero);
 
-void destruirEndereco(Endereco *);
+Aluno *criarAluno(char *matricula,
+                  char *cpf,
+                  char *nome,
+                  Endereco *end);
 
-Aluno *criarAluno(
-                char *matricula,
-                char *cpf,
-                char *nome,
-                Endereco *end
-);
+Professor *criarProfessor( 
+                            char *matricula,
+                            char *cpf,
+                            char *nome,
+                            Endereco *end);
 
-Aluno *atualizarAluno(
-                char *matricula,
-                char *cpf,
-                char *nome,
-                Endereco *end
-);
+Turmas *criarTurma(
+                    char *codigo,
+                    char *disciplina,
+                    char *matricula_professor_responsavel,
+                    char *numero_alunos,
+                    char *matricula_alunos,
+                    char *media_turma);
+
 
 
 void destruirAluno(Aluno *aluno);
-
-Professor *criarProfessor(
-                    char *matricula,
-                    char *cpf,
-                    char *nome,
-                    Endereco *end
-);
-
-Professor *atualizarProfessor(
-                    char *matricula,
-                    char *cpf,
-                    char *nome,
-                    Endereco *end
-);
-
-void destruirProfessor(Professor *);
-
-Turma *criarTurma(
-                char *codigo,
-                char *nome_disciplina,
-                Professor *professor,
-                Aluno *lista_alunos,
-                float *media_turma
-);
-
-Turma *atualizarTurma(
-                char *codigo,
-                char *nome_disciplina,
-                Professor *professor,
-                Aluno *lista_alunos,
-                float *media_turma
-);
-
-void destruirTurma(Turma *);
-
-
-
-#endif
+void destruirEndereco(Endereco *end);
+void destruirProfessor(Professor *professor);
+void destruirTurma(Turmas *turma);
